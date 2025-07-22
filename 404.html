@@ -2,7 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=/" />
+    <title>Redirigiendo…</title>
+    <script>
+      window.location.replace(
+        "/?redirect=" + window.location.pathname + window.location.search
+      );
+    </script>
   </head>
   <body></body>
 </html>
