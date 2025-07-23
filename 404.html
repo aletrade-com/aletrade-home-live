@@ -2,7 +2,15 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=/" />
+    <script type="text/javascript">
+      const redirect = new URLSearchParams(window.location.search).get("redirect");
+      if (redirect) {
+        window.location.replace(redirect);
+      } else {
+        const pathname = window.location.pathname;
+        window.location.replace("/?redirect=" + pathname);
+      }
+    </script>
   </head>
   <body></body>
 </html>
