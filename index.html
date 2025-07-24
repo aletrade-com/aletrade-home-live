@@ -34,8 +34,11 @@
   // Verifica si el chat se ha cargado correctamente en 5 segundos
   window.addEventListener("load", () => {
     setTimeout(() => {
-      const chatLoaded = document.querySelector("iframe[src*='chatbase']") || document.querySelector("script#-VKRtP1SagkS76xJgj5fa");
-      if (!chatLoaded) {
+      const chatIframe = document.querySelector("iframe[src*='chatbase']");
+const chatUnavailable = document.body.innerText.includes("This chatbot is currently unavailable");
+
+if (!chatIframe || chatUnavailable) {
+
         const warning = document.createElement("div");
         warning.style.position = "fixed";
         warning.style.bottom = "20px";
