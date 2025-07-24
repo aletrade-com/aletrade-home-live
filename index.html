@@ -30,31 +30,7 @@
   chatbotId="-VKRtP1SagkS76xJgj5fa"
   defer
 ></script>
-<script>
-  // Verifica si el chat se ha cargado correctamente en 5 segundos
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      const chatIframe = document.querySelector("iframe[src*='chatbase']");
-const chatUnavailable = document.body.innerText.includes("This chatbot is currently unavailable");
 
-if (!chatIframe || chatUnavailable) {
-
-        const warning = document.createElement("div");
-        warning.style.position = "fixed";
-        warning.style.bottom = "20px";
-        warning.style.left = "20px";
-        warning.style.backgroundColor = "#ffefc4";
-        warning.style.border = "1px solid #d6a700";
-        warning.style.padding = "12px 16px";
-        warning.style.borderRadius = "8px";
-        warning.style.fontFamily = "sans-serif";
-        warning.style.zIndex = "9999";
-        warning.innerHTML = '⚠️ El asistente no está disponible. Puedes <a href="/contacto" style="color:#0073e6;text-decoration:underline;">contactar aquí</a>.';
-        document.body.appendChild(warning);
-      }
-    }, 5000); // Espera 5 segundos
-  });
-</script>
 <!-- Detección automática si el chatbot está fuera de servicio -->
 <script>
 window.addEventListener("load", function () {
@@ -78,7 +54,7 @@ window.addEventListener("load", function () {
     function mostrarAvisoCaida() {
       const aviso = document.createElement("div");
       aviso.innerHTML = `
-        ⚠️ El asistente no está disponible en este momento.<br>
+        ⚠️ El asistente virtual no está disponible en este momento.<br>
         <a href="/contacto" style="color: white; text-decoration: underline;">Pulsa aquí para contactar directamente</a>.
       `;
       aviso.style.position = "fixed";
