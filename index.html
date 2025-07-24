@@ -55,5 +55,46 @@ if (!chatIframe || chatUnavailable) {
     }, 5000); // Espera 5 segundos
   });
 </script>
+<!-- Detección automática si el chatbot está fuera de servicio -->
+<script>
+window.addEventListener("load", function () {
+  setTimeout(() => {
+    const iframe = document.querySelector("iframe[src*='chatbase']");
+    if (!iframe) {
+      // No se ha cargado el iframe del chatbot
+      mostrarAvisoCaida();
+    } else {
+      // Esperar a que cargue el iframe e intentar acceder a su contenido
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const check = iframeDoc.body.innerText.includes("unavailable") || iframeDoc.body.innerText.includes("check your account");
+        if (check) mostrarAvisoCaida();
+      } catch (e) {
+        // No se puede acceder por políticas de CORS, asumimos que puede estar caído
+        mostrarAvisoCaida();
+      }
+    }
+
+    function mostrarAvisoCaida() {
+      const aviso = document.createElement("div");
+      aviso.innerHTML = `
+        ⚠️ El asistente no está disponible en este momento.<br>
+        <a href="/contacto" style="color: white; text-decoration: underline;">Pulsa aquí para contactar directamente</a>.
+      `;
+      aviso.style.position = "fixed";
+      aviso.style.bottom = "20px";
+      aviso.style.left = "20px";
+      aviso.style.background = "#c0392b";
+      aviso.style.color = "white";
+      aviso.style.padding = "12px";
+      aviso.style.borderRadius = "6px";
+      aviso.style.zIndex = 9999;
+      aviso.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+      document.body.appendChild(aviso);
+    }
+  }, 4000); // Esperamos 4 seg a que cargue el iframe si puede
+});
+</script>
+
   </body>
 </html>
