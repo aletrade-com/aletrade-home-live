@@ -95,47 +95,5 @@ window.addEventListener("load", function () {
   }, 4000); // Esperamos 4 seg a que cargue el iframe si puede
 });
 </script>
-<script>
-window.addEventListener("load", function () {
-  setTimeout(() => {
-    const iframe = document.querySelector("iframe[src*='chatbase']");
-    if (!iframe) return mostrarBanner();
-
-    try {
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-      const texto = iframeDoc?.body?.innerText || "";
-      if (texto.includes("unavailable") || texto.includes("check your account")) {
-        mostrarBanner();
-      }
-    } catch (e) {
-      // CORS bloqueado: asumimos error y mostramos banner
-      mostrarBanner();
-    }
-
-    function mostrarBanner() {
-      const aviso = document.createElement("div");
-      aviso.innerHTML = `
-        ⚠️ El Asistente Virtual no está disponible temporalmente.<br>
-        Puedes contactar directamente en <a href="mailto:info@aletrade.com" style="color:white; text-decoration: underline;">info@aletrade.com</a>,
-        <a href="https://www.aletrade.com/contacto" style="color:white; text-decoration: underline;">aquí</a> o por WhatsApp <a href="https://wa.me/34604549528" style="color:white; text-decoration: underline;">+34 604 549 528</a>.
-      `;
-      aviso.style.position = "fixed";
-      aviso.style.top = "0";
-      aviso.style.left = "0";
-      aviso.style.width = "100%";
-      aviso.style.padding = "14px";
-      aviso.style.backgroundColor = "#c0392b";
-      aviso.style.color = "white";
-      aviso.style.textAlign = "center";
-      aviso.style.zIndex = "99999";
-      aviso.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)";
-      aviso.style.fontSize = "14px";
-      aviso.style.lineHeight = "1.4";
-      document.body.prepend(aviso);
-    }
-  }, 4000);
-});
-</script>
-
   </body>
 </html>
