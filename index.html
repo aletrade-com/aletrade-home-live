@@ -13,8 +13,8 @@
   gtag('js', new Date());
   gtag('config', 'G-3XRCMEQVZT');
 </script>
-    <script type="module" crossorigin src="/assets/index-904c1ccb.js"></script>
-    <link rel="stylesheet" href="/assets/index-2f35018c.css">
+    <script type="module" crossorigin src="/assets/index-ef320c6b.js"></script>
+    <link rel="stylesheet" href="/assets/index-955cb4f1.css">
   </head>
   <body>
     <div id="root"></div>
@@ -30,62 +30,5 @@
   chatbotId="-VKRtP1SagkS76xJgj5fa"
   defer
 ></script>
-
-<!-- Detección automática si el chatbot está fuera de servicio -->
-<script>
-window.addEventListener("load", function () {
-  setTimeout(() => {
-    const iframe = document.querySelector("iframe[src*='chatbase']");
-    if (!iframe) return mostrarBanner();
-
-    try {
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-      const texto = iframeDoc?.body?.innerText || "";
-      if (texto.includes("unavailable") || texto.includes("check your account")) {
-        mostrarBanner();
-      }
-    } catch (e) {
-      mostrarBanner(); // error de acceso al iframe → asumimos que está caído
-    }
-
-    function mostrarBanner() {
-      const aviso = document.createElement("div");
-      aviso.innerHTML = `
-        <span style="margin-right: 10px;">⚠️ El asistente virtual no está disponible en este momento. 
-        <a href="https://www.aletrade.com/contacto" style="color:white; text-decoration: underline;">Pulsa aquí para contactar directamente.</a></span>
-        <button id="cerrarAviso" style="
-          background: transparent;
-          border: none;
-          color: white;
-          font-weight: bold;
-          font-size: 18px;
-          margin-left: 12px;
-          cursor: pointer;
-        " title="Cerrar">✖</button>
-      `;
-      aviso.style.position = "fixed";
-      aviso.style.bottom = "0";
-      aviso.style.left = "0";
-      aviso.style.width = "100%";
-      aviso.style.padding = "12px 10px";
-      aviso.style.backgroundColor = "#e74c3c";
-      aviso.style.color = "white";
-      aviso.style.textAlign = "center";
-      aviso.style.zIndex = "99999";
-      aviso.style.fontSize = "14px";
-      aviso.style.boxShadow = "0 -2px 4px rgba(0,0,0,0.2)";
-      aviso.style.display = "flex";
-      aviso.style.justifyContent = "center";
-      aviso.style.alignItems = "center";
-
-      document.body.appendChild(aviso);
-
-      document.getElementById("cerrarAviso").addEventListener("click", () => {
-        aviso.remove();
-      });
-    }
-  }, 4000);
-});
-</script>
   </body>
 </html>
